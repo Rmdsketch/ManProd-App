@@ -79,8 +79,8 @@ The system follows a RESTful architecture. Communication between frontend and ba
 5. JSON response is sent back to the frontend, updating the UI state dynamically.
 
 ## 📸 Screenshots / Demo
-- ![Add Product](assets/add-product.png)
-- ![View Product](assets/view-product.png)
+- ![Add Product](frontend/assets/add-product.png)
+- ![View Product](frontend/assets/view-product.png)
 
 ## 📝 Notes & Tradeoffs
 - **Precision with Currency**: The `price` field in the database was converted from `Float` to `Integer`. This is a best practice to avoid IEEE 754 Floating-Point calculation errors. On the frontend, `react-number-format` is used to format it dynamically as users type.
