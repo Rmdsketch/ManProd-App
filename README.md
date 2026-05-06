@@ -83,9 +83,10 @@ The system follows a RESTful architecture. Communication between frontend and ba
 - ![View Product](frontend/assets/view-product.png)
 
 ## 📝 Notes & Tradeoffs
-- **Precision with Currency**: The `price` field in the database was converted from `Float` to `Integer`. This is a best practice to avoid IEEE 754 Floating-Point calculation errors. On the frontend, `react-number-format` is used to format it dynamically as users type.
-- **Form Component Optimization**: The `ProductForm` utilizes a technique of keeping internal states as `String` during typing to allow decimal inputs without React forcefully overwriting them. They are then strictly cast to `Number` right before API submission.
-- **Unfinished Parts**: 
-  - There is currently no **Pagination** for the Product List view. If data grows massive, `GET /products` will be slow.
-  - No user **Authentication** / JWT is implemented yet.
-  - **Soft Deletes**: An `is_active` flag exists in the schema, but the current `DELETE` API method performs a Hard Delete from the database.
+
+- **Precision with Currency**: The `price` field in the database was converted from `Float` to `Integer`. This is a best practice to avoid **IEEE 754 Floating-Point** calculation errors. On the frontend, `react-number-format` is used to format it dynamically as users type.
+- **Form Component Optimization**: The `ProductForm` utilizes a technique of keeping internal states as `String` during typing to allow smooth decimal inputs. They are then strictly cast to `Number` right before API submission.
+- **Unfinished Parts & Limitations**:
+  - **Pagination**: There is currently no pagination for the Product List view. If the dataset grows significantly, `GET /products` performance will degrade.
+  - **Stock Management**: The stock update logic remains stagnant and has not yet been integrated into a dynamic transaction flow.
+  - **Soft Deletes & State**: Although an `is_active` field exists in the database schema, its implementation has not been further explored. Currently, the `DELETE` method performs a *Hard Delete* (permanently removing data) from the database.
